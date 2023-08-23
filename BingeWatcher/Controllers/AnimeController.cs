@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
+
 namespace BingeWatcher.Controllers
 {
-    public class AnimesController : Controller
+    public class AnimeController : Controller
     {
         public IActionResult Index()
         {
