@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34004.107
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingeWatcher", "BingeWatcher\BingeWatcher.csproj", "{D67D53FF-1125-411B-AE19-BA1E6DBF0E23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BingeWatcher", "BingeWatcher\BingeWatcher.csproj", "{D67D53FF-1125-411B-AE19-BA1E6DBF0E23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingeWatcher.DataAccess", "BingeWatcher.DataAccess\BingeWatcher.DataAccess.csproj", "{72FE4117-92AF-405A-BD6B-116708021A1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingeWatcher.Models", "BingeWatcher.Models\BingeWatcher.Models.csproj", "{5FB2BCE1-368D-454A-A2AA-A21F607DFE60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingeWatcher.Utils", "BingeWatcher.Utils\BingeWatcher.Utils.csproj", "{F9D0A323-126C-4CCD-BC97-A4F59F657DC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{D67D53FF-1125-411B-AE19-BA1E6DBF0E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D67D53FF-1125-411B-AE19-BA1E6DBF0E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D67D53FF-1125-411B-AE19-BA1E6DBF0E23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72FE4117-92AF-405A-BD6B-116708021A1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72FE4117-92AF-405A-BD6B-116708021A1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72FE4117-92AF-405A-BD6B-116708021A1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72FE4117-92AF-405A-BD6B-116708021A1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB2BCE1-368D-454A-A2AA-A21F607DFE60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB2BCE1-368D-454A-A2AA-A21F607DFE60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB2BCE1-368D-454A-A2AA-A21F607DFE60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB2BCE1-368D-454A-A2AA-A21F607DFE60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9D0A323-126C-4CCD-BC97-A4F59F657DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9D0A323-126C-4CCD-BC97-A4F59F657DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9D0A323-126C-4CCD-BC97-A4F59F657DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9D0A323-126C-4CCD-BC97-A4F59F657DC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
