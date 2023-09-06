@@ -12,9 +12,9 @@ namespace BingeWatcher.DataAccess.Repository.IRepository
         IEnumerable<T> GetAll(string? includeProperties = null);
         T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null);
 
-        void Add(T item);
-        void Delete(T item);
+        void Add(T entity);
+        void Delete(T entity);
         void DeleteAll();
-        void DeleteRange(IEnumerable<T> items);
+        void DeleteRange(IEnumerable<T> entities);
     }
 }

@@ -20,35 +20,50 @@ namespace BingeWatcher.DataAccess.Repository
             this.dbSet = _db.Set<T>();
         }
 
-        public void Add(T item)
+        public void Add(T entity)
         {
-           _db.Add(item);
-            _db.SaveChanges();
+           _db.Add(entity);
         }
 
-        public void Delete(T item)
+        public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _db.Remove(entity);
         }
 
         public void DeleteAll()
         {
-            throw new NotImplementedException();
+            _db.RemoveRange(GetAll());
         }
 
-        public void DeleteRange(IEnumerable<T> items)
+        public void DeleteRange(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            dbSet.RemoveRange(entities);
         }
 
         public IEnumerable<T> GetAll(string? includeProperties = null)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = dbSet;
+            if(!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach(var includeProp in includeProperties.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
+            return query.ToList<T>();
         }
 
         public T GetFirstOrDefault(System.Linq.Expressions.Expression<Func<T, bool>> filter, string? includeProperties = null)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = dbSet;
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
+            return query.FirstOrDefault();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BingeWatcher.Models
@@ -9,7 +8,7 @@ namespace BingeWatcher.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Title { get; set; }
+        public string? Title { get; set; }
         [Required]
         public string? Main_Picture { get; set; }
         [NotMapped]
@@ -18,7 +17,7 @@ namespace BingeWatcher.Models
         public string? End_Date { get; set;}
         public string? Synopsis { get; set; }
         [Required]
-        public string Status { get; set; }
+        public string? Status { get; set; }
         [Required]
         public int Number_Of_Episodes { get; set; }
         public string? Rating { get; set; } // g/pg/pg_13/r/r+/rx
