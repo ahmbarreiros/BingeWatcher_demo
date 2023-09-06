@@ -8,6 +8,7 @@ namespace BingeWatcher.DataAccess.Repository.IRepository
 {
     public interface IUnitOfWork
     { 
+        IGenreRepository GenreRepository { get; }
         void SaveChanges();
     }
 }
