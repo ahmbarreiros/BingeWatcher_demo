@@ -1,1 +1,42 @@
-﻿<h1>Animes!</h1>
+﻿@model List<Anime>
+
+<div class="container">
+    <div class="row pt-4 pr-4">
+        <div class="col-6">
+            <h1>Animes</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Anime" asp-area="" asp-action="Upsert" class="btn btn-primary">Criar/Editar Anime</a>
+        </div>
+    </div>
+</div>
+<table class="table table-striped table-bordered table-hover table-dark">
+    <thead>
+        <tr>
+            <th>Anime</th>
+            <th>Start Date</th>
+            <th>End_Date</th>
+            <th>Number_Of_Episodes</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model.OrderBy(u => u.Id))
+        {
+            <tr>
+                <td>@obj.Title</td>
+                <td>@obj.Start_Date</td>
+                <td>@obj.End_Date</td>
+                <td>@obj.Number_Of_Episodes</td>
+                <td>@obj.Status</td>
+                <td style="width: 25px;">
+                    <div class="btn-group" style="width: 100%;" role="group">
+                        <a asp-area="" asp-controller="Anime" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-outline-primary mx-2">Editar</a>
+                        <a asp-area="" asp-controller="Anime" asp-action="Delete" asp-route-Id="@obj.Id" class="btn btn-outline-danger ml-2">Excluir</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

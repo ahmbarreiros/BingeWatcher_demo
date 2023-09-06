@@ -1,4 +1,6 @@
 ﻿using BingeWatcher.Data;
+using BingeWatcher.DataAccess.Repository.IRepository;
+using BingeWatcher.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -6,16 +8,18 @@ namespace BingeWatcher.Controllers
 {
     public class AnimeController : Controller
     {
-        public readonly AppDbContext _db;
-        public AnimeController(AppDbContext db)
+        public readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public AnimeController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
         {
-
-            return View();
+            List<Anime> animeList = _unitOfWork.AnimeRepository.GetAll().ToList();
+            return View(animeList);
         }
     }
 }
