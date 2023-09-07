@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BingeWatcher.Migrations
+namespace BingeWatcher.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230902232647_AddGenreAndAnimeGenreRelationshipTablesToDb")]
-    partial class AddGenreAndAnimeGenreRelationshipTablesToDb
+    [Migration("20230907185538_RecreateDbAndAddGenreAndAnimeToDb")]
+    partial class RecreateDbAndAddGenreAndAnimeToDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,14 +35,17 @@ namespace BingeWatcher.Migrations
                     b.Property<string>("End_Date")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Main_Picture")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Number_Of_Episodes")
                         .HasColumnType("int");
 
                     b.Property<string>("Rating")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Start_Date")
@@ -61,30 +64,38 @@ namespace BingeWatcher.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GenreId");
+
                     b.ToTable("Animes");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            GenreId = 1,
                             Main_Picture = "mainpic1.jpg",
                             Number_Of_Episodes = 1,
+                            Rating = "G",
                             Status = "finished",
                             Title = "Anime 1"
                         },
                         new
                         {
                             Id = 2,
+                            GenreId = 1,
                             Main_Picture = "mainpic2.jpg",
                             Number_Of_Episodes = 1,
+                            Rating = "G",
                             Status = "finished",
                             Title = "Anime 2"
                         },
                         new
                         {
                             Id = 3,
+                            GenreId = 1,
                             Main_Picture = "mainpic3.jpg",
                             Number_Of_Episodes = 1,
+                            Rating = "G",
                             Status = "finished",
                             Title = "Anime 3"
                         });
@@ -161,6 +172,17 @@ namespace BingeWatcher.Migrations
                             Id = 3,
                             Name = "Terror"
                         });
+                });
+
+            modelBuilder.Entity("BingeWatcher.Models.Anime", b =>
+                {
+                    b.HasOne("BingeWatcher.Models.Genre", "Genre")
+                        .WithMany()
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genre");
                 });
 #pragma warning restore 612, 618
         }

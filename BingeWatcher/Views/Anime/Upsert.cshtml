@@ -4,23 +4,111 @@
     <input asp-for="Anime.Id" hidden />
     <input asp-for="Anime.Main_Picture" hidden />
     <div class="row">
+        <div class="row form-group">
+            <h2>@(Model.Anime.Id != 0 ? "Atualizar" : "Criar") Anime</h2>
+            <hr />
+        </div>
         <div class="col-10">
-            <div class="row form-group">
-                <h2>@(Model.Anime.Id != 0 ? "Atualizar" : "Criar") Anime</h2>
-                <hr />
+            <div class="row p-3">
+                <div class="form-group p-3 col-12 col-md-6">
+                    <label asp-for="Anime.Title" for="animeTitle"></label>
+                    <input asp-for="Anime.Title" id="animeTitle" class="form-control" />
+                    <span asp-validation-for="Anime.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group p-3 col-12 col-md-6">
+                    <label asp-for="Anime.Status" for="animeStatus"></label>
+                    <input asp-for="Anime.Status" id="animeStatus" class="form-control" />
+                    <span asp-validation-for="Anime.Status" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="form-group p-3 col-12 col-md-6">
+                    <label asp-for="Anime.Start_Date" for="animeStartDate"></label>
+                    <input asp-for="Anime.Start_Date" id="animeStartDate" class="form-control" />
+                    <span asp-validation-for="Anime.Start_Date" class="text-danger"></span>
+                </div>
+                <div class="form-group p-3 col-12 col-md-6">
+                    <label asp-for="Anime.End_Date" for="animeEndDate"></label>
+                    <input asp-for="Anime.End_Date" id="animeEndDate" class="form-control" />
+                    <span asp-validation-for="Anime.End_Date" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="form-group p-3 col-12 col-md-6">
+                    <label asp-for="Anime.Start_Date" for="animeStartDate"></label>
+                    <input type="date" asp-for="Anime.Start_Date" id="animeStartDate" class="form-control" />
+                    <span asp-validation-for="Anime.Start_Date" class="text-danger"></span>
+                </div>
+                <div class="form-group p-3 col-12 col-md-6">
+                    <label asp-for="Anime.End_Date" for="animeEndDate"></label>
+                    <input type="date" asp-for="Anime.End_Date" id="animeEndDate" class="form-control" />
+                    <span asp-validation-for="Anime.End_Date" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="form-group p-3 col-12 col-md-6">
+                    <label asp-for="Anime.Number_Of_Episodes" for="animeEpisodes"></label>
+                    <input asp-for="Anime.Number_Of_Episodes" id="animeEpisodes" class="form-control" />
+                    <span asp-validation-for="Anime.Number_Of_Episodes" class="text-danger"></span>
+                </div>
+                <div class="form-group p-3 col-12 col-md-6">
+                    <label asp-for="Anime.Rating" for="animeRating"></label>
+                    <select asp-for="Anime.Rating" id="animeRating" class="form-control" >
+                        <option disabled selected>--Selecione a Classificação--</option>
+                        <option>G</option> g/pg/pg_13/r/r+/rx
+                        <option>PG</option>
+                        <option>PG 13</option>
+                        <option>R</option>
+                        <option>R+</option>
+                        <option>RX</option>
+                    </select>
+                    <span asp-validation-for="Anime.Rating" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="form-group p-3 col-12 col-md-6">
+                    <label asp-for="Anime.Main_Picture" for="animeImage"></label>
+                    <input type="file" name="file" asp-for="Anime.Main_Picture" id="animeImage" class="form-control" />
+                    <span asp-validation-for="Anime.Main_Picture" class="text-danger"></span>
+                </div>
+                <div class="form-group p-3 col-12 col-md-6">
+                    <label asp-for="Anime.GenreId"></label>
+                    <select asp-for="@Model.Anime.GenreId" asp-items="@Model.GenreList" id="Anime.GenreId" class="form-control">
+                        <option disabled selected>--Selecione o Gênero--</option>
+                    </select>
+                    <span asp-validation-for="Anime.GenreId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="form-group p-3 col-12">
+                    <label asp-for="Anime.Synopsis" for="animeEpisodes"></label>
+                    <textarea asp-for="Anime.Synopsis" id="animeEpisodes" class="form-control card-text"></textarea>
+                    <span asp-validation-for="Anime.Synopsis" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Anime" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                        Voltar
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    @if (Model.Anime.Id != 0)
+                    {
+                        <button type="submit" class="btn btn-primary form-control">Atualizar</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary form-control">Criar</button>
+                    }
+                </div>
             </div>
         </div>
-        <div class="row p-3">
-            <div class="form-group p-3 col-12 col-md-6">
-                <label asp-for="Anime.Title" for="animeTitle"></label>
-                <input asp-for="Anime.Title" id="animeTitle" class="form-control" />
-                <span asp-validation-for="Anime.Title" class="text-danger"></span>
-            </div>
-            <div class="form-group p-3 col-12 col-md-6">
-                <label asp-for="Anime.Start_Date" for="animeStartDate"></label>
-                <input asp-for="Anime.Start_Date" id="animeStartDate" class="form-control" />
-                <span asp-validation-for="Anime.Start_Date" class="text-danger"></span>
-            </div>
+        <div class="col-2">
+            <img src="@Model.Anime.Main_Picture" width="100%" style="border-radius: 5px; border: 1px solid #161616" />
         </div>
+    </div>
+    <div class="border p-3 mt-4">
+
     </div>
 </form>

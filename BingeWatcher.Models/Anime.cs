@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BingeWatcher.Models
@@ -7,20 +9,31 @@ namespace BingeWatcher.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [DisplayName("Título")]
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public string? Title { get; set; }
-        [Required]
+        [ValidateNever]
         public string? Main_Picture { get; set; }
-        [NotMapped]
-        public object? Alternative_Titles { get; set; }
+        [DisplayName("Data de Início")]
         public string? Start_Date { get; set; }
+        [DisplayName("Data de Encerramento")]
         public string? End_Date { get; set;}
+        [DisplayName("Sinopse")]
         public string? Synopsis { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public string? Status { get; set; }
-        [Required]
+        [DisplayName("Episódios")]
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public int Number_Of_Episodes { get; set; }
+        [DisplayName("Classificação")]
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public string? Rating { get; set; } // g/pg/pg_13/r/r+/rx
+        [DisplayName("Gênero")]
+        public int GenreId { get; set; }
+        [ForeignKey("GenreId")]
+        [ValidateNever]
+        [DisplayName("Gênero")]
+        public Genre Genre { get; set; }
 
     }
 }

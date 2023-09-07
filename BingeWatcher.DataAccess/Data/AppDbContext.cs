@@ -18,9 +18,9 @@ namespace BingeWatcher.Data
             //base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Anime>().HasData(
-                new Anime { Id = 1, Title = "Anime 1", Main_Picture = "mainpic1.jpg", Status = "finished", Number_Of_Episodes = 1 },
-                new Anime { Id = 2, Title = "Anime 2", Main_Picture = "mainpic2.jpg", Status = "finished", Number_Of_Episodes = 1 },
-                new Anime { Id = 3, Title = "Anime 3", Main_Picture = "mainpic3.jpg", Status = "finished", Number_Of_Episodes = 1 }
+                new Anime { Id = 1, Title = "Anime 1", Main_Picture = "mainpic1.jpg", Status = "finished", Number_Of_Episodes = 1, Rating = "G", GenreId = 1 },
+                new Anime { Id = 2, Title = "Anime 2", Main_Picture = "mainpic2.jpg", Status = "finished", Number_Of_Episodes = 1, Rating = "G", GenreId = 1 },
+                new Anime { Id = 3, Title = "Anime 3", Main_Picture = "mainpic3.jpg", Status = "finished", Number_Of_Episodes = 1, Rating = "G", GenreId = 1 }
             );
 
             modelBuilder.Entity<Genre>().HasData(
