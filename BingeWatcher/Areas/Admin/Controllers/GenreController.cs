@@ -2,14 +2,14 @@
 using BingeWatcher.DataAccess.Repository.IRepository;
 using BingeWatcher.Models;
 
-namespace BingeWatcher.Controllers
+namespace BingeWatcher.Areas.Admin.Controllers
 {
     public class GenreController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         public GenreController(IUnitOfWork unitOfWork)
         {
-             _unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
@@ -31,7 +31,8 @@ namespace BingeWatcher.Controllers
                 _unitOfWork.SaveChanges();
                 TempData["Success"] = "Gênero criado!";
                 return RedirectToAction("Index");
-            } else
+            }
+            else
             {
                 TempData["Error"] = "Erro ao criar gênero.";
                 return RedirectToAction("Index");
@@ -40,16 +41,18 @@ namespace BingeWatcher.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if(id == null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
-            } else
+            }
+            else
             {
                 Genre obj = _unitOfWork.GenreRepository.GetFirstOrDefault(u => u.Id == id);
-                if(obj == null)
+                if (obj == null)
                 {
                     return NotFound();
-                } else
+                }
+                else
                 {
                     return View(obj);
                 }
@@ -98,7 +101,7 @@ namespace BingeWatcher.Controllers
         public IActionResult DeletePOST(int? id)
         {
             Genre? obj = _unitOfWork.GenreRepository.GetFirstOrDefault(u => u.Id == id);
-            if(obj == null)
+            if (obj == null)
             {
                 TempData["Error"] = "Erro ao remover gênero.";
                 return RedirectToAction("Index");

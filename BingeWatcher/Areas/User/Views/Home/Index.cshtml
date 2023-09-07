@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Anime>
+
+<div class="row pb-3">
+    @foreach(var anime in Model)
+    {
+        <div class="col-lg-3 col-sm-6">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+                    <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                        <img src="@anime.Main_Picture" class="card-img-top rounded" />
+                        <div class="card-body pb-0">
+                            <div class="pl-1">
+                                <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@anime.Title</p>
+                                <p class="card-title text-secondary text-center"><b style="color: purple">@anime.Number_Of_Episodes</b> episódios</p>
+                            </div>
+                            <div class="pl-1">
+                                <p class="text-dark text-opacity-75 text-center mb-0">Data de início: @anime.Start_Date</p>
+                                @if(anime.End_Date != null)
+                                {
+                                    <p class="text-dark text-opacity-75 text-center mb-0">Data de encerramento: @anime.End_Date</p>
+                                } else
+                                {
+                                    <p class="text-dark text-opacity-75 text-center mb-0">Em andamento</p>
+                                }
+
+                            </div>
+                            <div class="pl-1">
+                                <p class="card-title text-dark opacity-75 text-center"> Classificação: <b class="text-danger">@anime.Rating</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a asp-action="Details" asp-route-Id="@anime.Id" class="btn btn-primary bg-gradient border-0 form-control rounded-bottom">Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -6,7 +6,7 @@
             <h1>Gêneros</h1>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Genre" asp-area="" asp-action="Create" class="btn btn-primary">Criar novo Gênero</a>
+            <a asp-controller="Genre" asp-area="Admin" asp-action="Create" class="btn btn-primary">Criar novo Gênero</a>
         </div>
     </div>
 </div>
@@ -24,8 +24,8 @@
                 <td>@obj.Name</td>
                 <td style="width: 25px;">
                     <div class="btn-group" style="width: 100%;" role="group">
-                        <a asp-area="" asp-controller="Genre" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-outline-primary mx-2">Editar</a>
-                        <a asp-area="" asp-controller="Genre" asp-action="Delete" asp-route-Id="@obj.Id" class="btn btn-outline-danger ml-2">Excluir</a>
+                        <a asp-area="Admin" asp-controller="Genre" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-outline-primary mx-2">Editar</a>
+                        <a asp-area="Admin" asp-controller="Genre" asp-action="Delete" asp-route-Id="@obj.Id" class="btn btn-outline-danger ml-2">Excluir</a>
                     </div>
                 </td>
             </tr>

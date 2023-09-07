@@ -5,7 +5,7 @@ using BingeWatcher.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace BingeWatcher.Controllers
+namespace BingeWatcher.Areas.Admin.Controllers
 {
     public class AnimeController : Controller
     {
@@ -36,15 +36,16 @@ namespace BingeWatcher.Controllers
                 Anime = new Anime()
             };
 
-            if(id == null || id == 0)
+            if (id == null || id == 0)
             {
                 return View(animeVM);
-            } else
+            }
+            else
             {
                 animeVM.Anime = _unitOfWork.AnimeRepository.GetFirstOrDefault(u => u.Id == id);
                 return View(animeVM);
             }
-            
+
         }
 
         [HttpPost]
@@ -74,12 +75,13 @@ namespace BingeWatcher.Controllers
                     }
                     animeVM.Anime.Main_Picture = @"\images\anime\" + fileName;
                 }
-                
-                if(animeVM.Anime.Id == 0)
+
+                if (animeVM.Anime.Id == 0)
                 {
                     _unitOfWork.AnimeRepository.Add(animeVM.Anime);
                     TempData["success"] = "Anime criado com sucesso!";
-                } else
+                }
+                else
                 {
                     _unitOfWork.AnimeRepository.Update(animeVM.Anime);
                     TempData["success"] = "Anime atualizado com sucesso!";
@@ -87,8 +89,9 @@ namespace BingeWatcher.Controllers
 
                 _unitOfWork.SaveChanges();
                 return RedirectToAction("Index");
-                
-            } else
+
+            }
+            else
             {
                 animeVM.GenreList = _unitOfWork.GenreRepository.GetAll().Select(u => new SelectListItem
                 {

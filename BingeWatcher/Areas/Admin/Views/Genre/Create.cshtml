@@ -1,10 +1,9 @@
 ﻿@model Genre
 
 <form method="post">
-    <input hidden asp-for="Id"/>
     <div class="border p-4 mt-4">
         <div class="row form-group">
-            <h2>Editar Gênero</h2>
+            <h2>Criar Gênero</h2>
             <hr />
         </div>
         <div class="row p-3">
@@ -19,8 +18,14 @@
                 <a asp-controller="Genre" asp-action="Index" class="btn btn-outline-danger form-control">Voltar</a>
             </div>
             <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-success btn-group-lg text-center form-control">Editar</button>
+                <button type="submit" class="btn btn-success btn-group-lg text-center form-control">Criar</button>
             </div>
         </div>
     </div>
 </form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
