@@ -1,9 +1,11 @@
 ﻿using BingeWatcher.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BingeWatcher.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -15,7 +17,7 @@ namespace BingeWatcher.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Anime>().HasData(
                 new Anime { Id = 1, Title = "Anime 1", Main_Picture = "mainpic1.jpg", Status = "finished", Number_Of_Episodes = 1, Rating = "G", GenreId = 1 },
