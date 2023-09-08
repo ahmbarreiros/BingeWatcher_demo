@@ -103,5 +103,43 @@ namespace BingeWatcher.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        
+
+        #region API CALLS
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            List<Anime> obj= _unitOfWork.AnimeRepository.GetAll(includeProperties: "Genre").ToList();
+            return Json(new { data = obj });
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int? id)
+        {
+            var anime = _unitOfWork.AnimeRepository.GetFirstOrDefault(u => u.Id == id);
+            if (anime == null)
+            {
+                return Json(new { success = false, message = "Erro ao deletar anime."});
+            }
+
+            var oldImagePath =
+                           Path.Combine(_webHostEnvironment.WebRootPath,
+                           anime.Main_Picture.TrimStart('\\'));
+
+            if (System.IO.File.Exists(oldImagePath))
+            {
+                System.IO.File.Delete(oldImagePath);
+            }
+
+            _unitOfWork.AnimeRepository.Delete(anime);
+            _unitOfWork.SaveChanges();
+
+            return Json(new { success = true, message = "Anime deletado com sucesso!" });
+        }
+
+
+        #endregion
     }
 }

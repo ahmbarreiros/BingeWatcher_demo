@@ -10,33 +10,20 @@
         </div>
     </div>
 </div>
-<table class="table table-striped table-bordered table-hover table-dark">
+<table id="tblData" class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr>
             <th>Anime</th>
-            <th>Start Date</th>
-            <th>End_Date</th>
-            <th>Number_Of_Episodes</th>
+            <th>Data de Início</th>
+            <th>Data de encerramento</th>
+            <th>Número de episódios</th>
             <th>Status</th>
             <th></th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var obj in Model.OrderBy(u => u.Id))
-        {
-            <tr>
-                <td>@obj.Title</td>
-                <td>@obj.Start_Date</td>
-                <td>@obj.End_Date</td>
-                <td>@obj.Number_Of_Episodes</td>
-                <td>@obj.Status</td>
-                <td style="width: 25px;">
-                    <div class="btn-group" style="width: 100%;" role="group">
-                        <a asp-area="Admin" asp-controller="Anime" asp-action="Upsert" asp-route-Id="@obj.Id" class="btn btn-outline-primary mx-2">Editar</a>
-                        <a asp-area="Admin" asp-controller="Anime" asp-action="Delete" asp-route-Id="@obj.Id" class="btn btn-outline-danger ml-2">Excluir</a>
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
+    
 </table>
+
+@section Scripts{
+    <script src="~/js/anime.js"></script>
+}
