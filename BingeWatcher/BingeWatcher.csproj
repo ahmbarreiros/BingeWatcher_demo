@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BingeWatcher.DataAccess\BingeWatcher.DataAccess.csproj" />
+    <ProjectReference Include="..\BingeWatcher.Utils\BingeWatcher.Utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
