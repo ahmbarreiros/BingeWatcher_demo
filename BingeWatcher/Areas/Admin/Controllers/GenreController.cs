@@ -4,6 +4,7 @@ using BingeWatcher.Models;
 
 namespace BingeWatcher.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class GenreController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

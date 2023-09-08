@@ -5,6 +5,7 @@ using System.Diagnostics;
 
 namespace BingeWatcher.Areas.User.Controllers
 {
+    [Area("User")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

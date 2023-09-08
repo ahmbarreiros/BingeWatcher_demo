@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BingeWatcher.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class AnimeController : Controller
     {
         public readonly IUnitOfWork _unitOfWork;
