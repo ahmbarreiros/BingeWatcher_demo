@@ -25,8 +25,8 @@ Before getting started, make sure you have the following prerequisites installed
 
 1. Clone this repository to your local machine:
    ```bash
-   git clone https://github.com/yourusername/binge-tracker.git
-   cd binge-watcher
+   git clone https://github.com/ahmbarreiros/BingeWatcher_demo.git
+   cd BingeWatcher_demo
    ```
    
 2. Set up the database:
